@@ -14,4 +14,3 @@ class ShoppingCart(Product):
 cart1 = ShoppingCart("banana", 5, 2)
 
 print(cart1.calculate_price())
-    
