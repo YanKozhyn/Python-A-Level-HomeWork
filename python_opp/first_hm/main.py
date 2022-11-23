@@ -2,28 +2,22 @@ class Product:
     def __init__(self, name, price):
         self.name = name
         self.price = price
-
     def total_price(self, quantity):
-        return
+        return round(self.price * quantity, 2)
 
-    
 class ShoppingCart:
-    def __init__(self, product: Product, quantity):
-        self.products = product
-        self.quantity = quantity
-
+    def __init__(self):
+        self.order = {}
     def add_product(self, product: Product, quantity):
-        ...
-        
+        self.order.update({product: quantity})
     def total_price(self):
-        return f"Your total price: {self.products.price * self.quantity}"
-
-    
-bear = Product("Bear", 5.5)  # те, що ти хочеш - beer, а медведя на 5.5 я би також придбав
-print(bear.price_of_product())
-chips = Product("Chips", 10)
-cart = ShoppingCart(bear, 2)
-print(cart.total_price())
+        result = 0
+        for (product,amount) in self.order.items():
+            result += round((product.price * amount), 2)
+        return result
+    def display_product(self):
+        for (k, v) in self.order.items():
+            print(f'Price of {k.name}: {k.price}, amount of your product: {v}')
 
 
 if __name__ == "__main__":
