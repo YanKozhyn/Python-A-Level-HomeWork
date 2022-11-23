@@ -1,16 +1,23 @@
 class Product:
-    def __init__(self, name, price, quantity) -> None:
+    def __init__(self, name, price):
         self.name = name
         self.price = price
-        self.__quantity = quantity
-    def calculate_price(self):
-        return f"Total price: {self.price * self.__quantity}"
 
-class ShoppingCart(Product):
-    def __init__(self,name, price, quantity):
-        super().__init__(name, price,quantity)
-        super().calculate_price()
-        
-cart1 = ShoppingCart("banana", 5, 2)
+    def price_of_product(self):
+        return f"Price: {self.price} of product: {self.name}"
 
-print(cart1.calculate_price())
+
+class ShoppingCart:
+    def __init__(self, product: Product, quantity):
+        self.products = product
+        self.quantity = quantity
+
+    def total_price(self):
+        return self.products.price * self.quantity
+
+
+bear = Product("Bear", 5.5)
+print(bear.price_of_product())
+chips = Product("Chips", 10)
+cart = ShoppingCart(bear, 2)
+print(cart.total_price())
