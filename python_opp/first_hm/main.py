@@ -12,8 +12,8 @@ class ShoppingCart:
         self.order.update({product: quantity})
     def total_price(self):
         result = 0
-        for (product,amount) in self.order.items():
-            result += round((product.price * amount), 2)
+        for (product,quantity) in self.order.items():
+            result += product.total_price(quantity)
         return result
     def display_product(self):
         for (k, v) in self.order.items():
